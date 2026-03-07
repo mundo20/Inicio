@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Mundo | La Nueva Era del Entretenimiento Gratis</title>
+    <meta name="description" content="Disfruta de los mejores juegos retro y películas de culto en Mundo. La mejor plataforma de entretenimiento gratuito.">
+    <meta name="keywords" content="Mundo, Mundo juegos, juegos gratis, películas clásicas, retro gaming, cine online">
+
+    <style>
+        :root {
+            --fondo: #090b13;
+            --tarjeta: #1a1d29;
+            --blanco-puro: #f9f9f9;
+            --azul-brillante: #0063e5;
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* HEADER PROFESIONAL */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(9, 11, 19, 0.95);
+            border-bottom: 1px solid #2a2d37;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area { display: flex; align-items: center; }
+        
+        /* Si subes el logo.png usa esto, si no, se verá el texto */
+        .logo-img { height: 45px; margin-right: 15px; }
+        
+        h1 { 
+            color: white; 
+            letter-spacing: 4px; 
+            font-size: 1.8rem; 
+            margin: 0;
+            background: linear-gradient(to right, #fff, #0063e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* BUSCADOR ESTILO PREMIUM */
+        .busqueda-area { flex-grow: 1; max-width: 400px; margin: 0 50px; }
+        #buscador {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid #333;
+            background: #1a1d29;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+        #buscador:focus {
+            border-color: var(--azul-brillante);
+            box-shadow: 0 0 15px rgba(0, 99, 229, 0.4);
+        }
+
+        /* CONTENIDO */
+        .seccion { padding: 40px 50px; }
+        h2 { font-size: 1.3rem; color: #a0a0a0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+
+        .contenedor-carteleras {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .pelicula {
+            background: var(--tarjeta);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 3px solid transparent;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .pelicula:hover {
+            transform: scale(1.08);
+            border: 3px solid var(--blanco-puro);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .pelicula img { width: 100%; height: 300px; object-fit: cover; }
+        .pelicula-info { 
+            padding: 15px; 
+            text-align: center; 
+            font-weight: 600;
+            background: linear-gradient(to top, #1a1d29, transparent);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="logo-mundo.png" alt="M" class="logo-img" onerror="this.style.display='none'">
+            <h1>MUNDO</h1>
+        </div>
+        
+        <div class="busqueda-area">
+            <input type="text" id="buscador" placeholder="Buscar películas o juegos..." onkeyup="filtrar()">
+        </div>
+    </header>
+
+    <div class="seccion">
+        <h2>Recomendados para ti</h2>
+        <div class="contenedor-carteleras" id="lista-contenido">
+            
+            <div class="pelicula" onclick="window.location.href='#'">
+                <img src="https://m.media-amazon.com/images/M/MV5BNjE5MzYwMzYxN15BMl5BanBnXkFtZTgwOTk4MTc0MDE@._V1_.jpg" alt="Nosferatu">
+                <div class="pelicula-info">Nosferatu (1922)</div>
+            </div>
+
+            <div class="pelicula" onclick="window.location.href='#'">
+                <img src="https://m.media-amazon.com/images/I/71Yy3I0+pOL._AC_SL1000_.jpg" alt="Metropolis">
+                <div class="pelicula-info">Metrópolis (1927)</div>
+            </div>
+
+            <div class="pelicula" onclick="window.location.href='#'">
+                <img src="https://m.media-amazon.com/images/I/51u68zV6pLL.jpg" alt="Pac-man">
+                <div class="pelicula-info">Pac-Man Arcade</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function filtrar() {
+            let input = document.getElementById('buscador').value.toLowerCase();
+            let tarjetas = document.getElementsByClassName('pelicula');
+
+            for (let i = 0; i < tarjetas.length; i++) {
+                let nombre = tarjetas[i].innerText.toLowerCase();
+                if (nombre.includes(input)) {
+                    tarjetas[i].style.display = "block";
+                } else {
+                    tarjetas[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
